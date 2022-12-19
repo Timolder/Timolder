@@ -1,36 +1,26 @@
-import math
-a=0
-class Point():
-    def __init__(self, X,Y):
-        self.X=X
-        self.Y=Y
-    def __str__(self):
-        return f"X point: {self.X}  Y point: {self.Y}"
-    def get_distance(self, other_point):
-        X1=self.X
-        X2=other_point.X
-        Y1=self.Y
-        Y2=other_point.Y
-        return math.dist((self.X, self.Y), (other_point.X, other_point.Y))
-class Courier():
-    def __init__(self, name, X, Y):
-        self.name=name
-        self.X=X
-        self.Y=Y
-    def __str__(self):
-        return f"Имя: {self.name} X point: {self.X}  Y point: {self.Y} "
-Courier1 = Courier("Дмитрий", 4, 4)
-Courier2 =Courier("Семен", 1, 7)
-O=Point(0, 0)
-p1=Point(3, 4)
-p2=Point(4, 8)
-CourierN =[Courier1, Courier2]
-p = [p1, p2]
-for i in p:
-    a=a+1
-    dist = i.get_distance(CourierN[0])
-    dist2= i.get_distance(CourierN[1])
-    if (dist>=dist2):
-        print("заказ", a, "получает", Courier1)
-    else:
-        print("заказ", a, "получает", Courier2)
+alfavit={"а":1, "б":2, "в":3, "г":4, "д":5, "е":6, "ё":7, "ж":8, "з":9, "и":10, "й":11, "к":12, "л":13, "м":14, "н":15, "о":16, "п":17, "р":18, "с":19, "т":20, "у":21, "ф":22, "х":23, "ц":24, "ч":25, "ш":26, "щ":27, "ъ":28, "ы":29, "ь":30,"э":31, "ю":32, "я":33}
+
+alfavit2={1:"а", 2:"б", 3:"в", 4:"г", 5:"д", 6:"е", 7:"ё", 8:"ж", 9:"з", 10:"и", 11:"й", 12:"к", 13:"л", 14:"м", 15:"н", 16:"о", 17:"п", 18:"р", 19:"с", 20:"т", 21:"у", 22:"ф", 23:"х",24:"ц", 25:"ч", 26:"ш", 27:"щ", 28:"ъ", 29:"ы", 30:"ь", 31:"э", 32:"ю", 33:"я"}
+number=[]
+print("введите слово")
+word=input()
+
+for i in word:
+    if i in alfavit.keys():
+        number.append(alfavit[i])
+z=-1
+k=-1
+n=0
+while(z!=-len(number)-1):
+    j=number[z]-number[k]
+    k=k-1
+    if(k==-len(number)-1):
+      z=z-1
+      k=z
+      if(j>0 and n==0):
+        number[z], number[k+1]=number[k+1], number[z]
+        n=n+1
+        
+        for i in number:
+          if i in alfavit2.keys():
+            print(alfavit2[i], end='')
